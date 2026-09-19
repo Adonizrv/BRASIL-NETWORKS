@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <!--
+    SITE EM ARQUIVO ÚNICO:
+    - index.html contém HTML + CSS + JavaScript.
+    - As imagens/SVGs ficam na mesma pasta do index.html.
+  -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Brasil Networks - Internet fibra óptica em Congonhal/MG. Planos de 350, 500 e 700 Mega." />
+  <title>BNT Brasil Networks | Internet Fibra Óptica</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+/*
+=========================================================
+BNT BRASIL NETWORKS — FOLHA DE ESTILOS PRINCIPAL
+Arquivo: assets/css/style.css
+
+Organização:
+01. Variáveis globais
+02. Reset e elementos base
+03. Cabeçalho e navegação
+04. Botões
+05. Banner dinâmico
+06. Faixa rápida
+07. Planos
+08. Seções institucionais
+09. Serviços
+10. Contato
+11. Rodapé
+12. Botão flutuante
+13. Responsividade
+
+Observação:
+As cores, espaçamentos e tamanhos principais ficam centralizados
+em :root para facilitar futuras alterações.
+=========================================================
+*/
+
+
+/* 01. VARIÁVEIS GLOBAIS */
+:root{
+  --navy:#082d4f;
+  --navy-2:#0b3d68;
+  --blue:#0099d8;
+  --blue-2:#42c8ff;
+  --cyan:#7ce1ff;
+  --ink:#122130;
+  --muted:#667684;
+  --bg:#f4f8fb;
+  --white:#ffffff;
+  --line:#dbe7ef;
+  --shadow:0 20px 60px rgba(6,45,79,.13);
+  --radius:26px;
+}
+/* 02. RESET E ELEMENTOS BASE */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Inter,Arial,sans-serif;
+  color:var(--ink);
+  background:#fff;
+}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+.container{width:min(1180px,calc(100% - 40px));margin:0 auto}
+
+/* 03. CABEÇALHO E NAVEGAÇÃO */
+.site-header{
+  position:sticky;top:0;z-index:1000;
+  background:rgba(255,255,255,.92);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(8,45,79,.08);
+}
+.nav-wrap{height:72px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center}
+.brand-logo{
+  display:block;
+  width:165px;
+  height:48px;
+  object-fit:contain;
+  object-position:left center;
+}
+.main-nav{display:flex;align-items:center;gap:28px;font-size:14px;font-weight:600}
+.main-nav>a:not(.btn){position:relative}
+.main-nav>a:not(.btn)::after{
+  content:"";position:absolute;left:0;bottom:-8px;height:2px;width:0;background:var(--blue);transition:.2s
+}
+.main-nav>a:not(.btn):hover::after{width:100%}
+.menu-toggle{display:none;background:none;border:0;padding:8px}
+.menu-toggle span{display:block;width:26px;height:2px;background:var(--navy);margin:5px 0}
+
+/* 04. BOTÕES E CTAs */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:48px;padding:0 22px;border-radius:14px;font-weight:800;
+  border:1px solid transparent;transition:.2s ease;cursor:pointer;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn-sm{min-height:42px;padding:0 18px;border-radius:12px}
+.btn-lg{min-height:54px;padding:0 26px}
+.btn-primary{background:linear-gradient(135deg,var(--blue),#0077b8);color:#fff;box-shadow:0 10px 25px rgba(0,153,216,.24)}
+.btn-ghost{border-color:rgba(255,255,255,.45);color:#fff;background:rgba(255,255,255,.08)}
+.btn-light{background:#fff;color:var(--navy)}
+.btn-outline{border-color:#b7d9ea;color:var(--navy);background:#fff}
+
+.hero{
+  background:linear-gradient(135deg,#062c4c 0%,#083d69 58%,#0a79aa 100%);
+  color:#fff;
+  position:relative;
+  overflow:hidden;
+}
+.hero::before{
+  content:"";
+  position:absolute;inset:0;
+  background:
+    radial-gradient(circle at 15% 18%,rgba(124,225,255,.18),transparent 22%),
+    radial-gradient(circle at 85% 22%,rgba(124,225,255,.12),transparent 16%);
+}
+.hero-grid{
+  position:relative;
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:34px;
+  align-items:center;
+  min-height:520px;
+  padding:42px 0 38px;
+}
+.eyebrow{
+  display:inline-flex;align-items:center;
+  text-transform:uppercase;letter-spacing:1.8px;font-size:12px;font-weight:800;color:var(--blue)
+}
+.hero .eyebrow{color:#bdefff}
+.hero h1,.section-heading h2,.feature-copy h2,.cta-band h2,.contact-section h2{
+  font-family:Manrope,sans-serif;
+  line-height:1.04;
+  letter-spacing:-1.8px;
+}
+.hero h1{
+  font-size:clamp(34px,4.2vw,58px);
+  margin:12px 0 14px;
+  max-width:720px;
+}
+.hero h1 span{color:#7ce1ff}
+.hero-copy p{font-size:16px;line-height:1.65;max-width:560px;color:#d5ebf5}
+.hero-actions,.double-buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+.hero-counters{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px;max-width:470px
+}
+.counter{
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:18px;
+  padding:14px;
+}
+.counter strong{display:block;font-size:18px}
+.counter span{display:block;margin-top:6px;color:#d9eef8;font-size:13px}
+.hero-visual img{
+  width:100%;
+  max-width:520px;
+  margin-left:auto;
+  border-radius:24px;
+  box-shadow:0 18px 42px rgba(0,0,0,.18);
+}
+
+
+.scroll-cue{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  color:#d9eef8;
+  font-weight:800;
+  font-size:13px;
+  padding:0 0 20px;
+}
+.scroll-cue strong{
+  width:30px;
+  height:30px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:rgba(255,255,255,.10);
+  border:1px solid rgba(255,255,255,.16);
+  font-size:16px;
+}
+.scroll-cue:hover{color:#fff}
+
+
+.info-strip{background:#fff;border-bottom:1px solid #eef5f8}
+.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:16px 0}
+.info-item{
+  background:#f7fbfd;border:1px solid #e7f0f5;border-radius:16px;padding:16px;
+}
+.info-item strong{display:block;color:var(--navy);margin-bottom:6px}
+.info-item span{color:var(--muted);font-size:14px;line-height:1.6}
+
+.section{padding:100px 0}
+.section-heading{text-align:center;max-width:760px;margin:0 auto 50px}
+.section-heading h2,.feature-copy h2,.cta-band h2,.contact-section h2{
+  font-size:clamp(34px,4vw,52px);
+  margin:14px 0 16px;
+}
+.section-heading p,.feature-copy p,.cta-band p,.contact-section p{color:var(--muted);line-height:1.75}
+
+/* 07. PLANOS */
+.plans-section{background:var(--bg)}
+.plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.plan-card{
+  position:relative;background:#fff;border:1px solid #e0ebf2;border-radius:26px;padding:30px;
+  box-shadow:0 8px 25px rgba(6,45,79,.05);transition:.25s
+}
+.plan-card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.plan-card.featured{border:2px solid var(--blue);transform:translateY(-8px)}
+.featured-badge{
+  position:absolute;right:22px;top:-13px;background:var(--blue);color:#fff;border-radius:999px;
+  padding:8px 14px;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1px
+}
+.plan-kicker{text-transform:uppercase;font-size:11px;letter-spacing:1.5px;font-weight:800;color:var(--blue)}
+.plan-speed{display:flex;align-items:flex-end;gap:7px;margin-top:8px}
+.plan-speed strong{font-size:56px;font-family:Manrope,sans-serif;line-height:1}
+.plan-speed span{font-size:14px;font-weight:800;margin-bottom:8px;color:var(--muted)}
+.plan-price{display:flex;align-items:flex-end;gap:4px;margin:28px 0 20px;color:var(--navy)}
+.plan-price span{font-size:18px;font-weight:800;margin-bottom:10px}
+.plan-price strong{font-family:Manrope,sans-serif;font-size:48px;line-height:1}
+.plan-price small{margin-bottom:7px;color:var(--muted)}
+.plan-card ul{list-style:none;padding:0;margin:22px 0 28px}
+.plan-card li{padding:11px 0 11px 26px;border-bottom:1px solid #edf3f7;position:relative;color:#4d5c67;font-size:14px}
+.plan-card li::before{content:"✓";position:absolute;left:0;color:var(--blue);font-weight:900}
+.plan-actions .btn{width:100%}
+.section-cta{text-align:center;margin-top:28px}
+.fine-print{text-align:center;color:#8795a0;font-size:11px;margin-top:20px}
+
+/* 08. SEÇÕES INSTITUCIONAIS */
+.image-section{background:#fff}
+.image-section.alt{background:var(--bg)}
+.feature-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center
+}
+.feature-grid.reverse{grid-template-columns:1fr 1fr}
+.feature-image img{
+  width:100%;border-radius:30px;box-shadow:var(--shadow)
+}
+.check-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:28px}
+.check-grid span{font-size:14px;font-weight:700;color:#35505f}
+
+/* 09. SERVIÇOS */
+.services-section{background:#fff}
+.services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.service-card{
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:28px;
+  min-height:260px;
+  display:flex;
+  flex-direction:column;
+}
+.service-icon{
+  width:56px;height:56px;border-radius:16px;
+  display:grid;place-items:center;background:#e9f8ff;color:var(--blue);
+  font-size:24px;font-weight:900
+}
+.service-card h3{font-family:Manrope,sans-serif;margin:22px 0 10px;font-size:20px}
+.service-card p{color:var(--muted);font-size:14px;line-height:1.65;margin:0}
+.service-link{
+  margin-top:auto;
+  padding-top:18px;
+  color:var(--blue);
+  font-weight:800;
+}
+
+.cta-band{
+  padding:0 0 100px;
+  background:var(--bg);
+}
+.cta-band-wrap{
+  background:linear-gradient(135deg,#073253,#0a79aa);
+  border-radius:32px;
+  color:#fff;
+  padding:46px 50px;
+  display:flex;align-items:center;justify-content:space-between;gap:30px;
+  box-shadow:var(--shadow)
+}
+.eyebrow-light{color:#9de9ff}
+.cta-band p{color:#d9eef8;margin:0}
+
+/* 10. CONTATO */
+.contact-section{background:#fff}
+.contact-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:60px;align-items:start}
+.contact-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.contact-card{
+  background:#f8fbfd;border:1px solid var(--line);border-radius:20px;padding:24px;
+  display:flex;flex-direction:column;gap:8px
+}
+.contact-card.full{grid-column:1/-1}
+.contact-card span{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;font-weight:800}
+.contact-card strong{color:var(--navy);font-size:20px}
+.contact-card a{color:var(--blue);font-weight:800;font-size:14px;margin-top:6px}
+
+/* 11. RODAPÉ */
+.site-footer{background:#06263f;color:#d5e6ef;padding:34px 0}
+.footer-grid{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:30px}
+.footer-brand .site-footer p{font-size:13px;margin:0}
+.copyright{color:#9db3c1;text-align:right}
+
+/* 12. BOTÃO FLUTUANTE DO WHATSAPP */
+.floating-whatsapp{
+  position:fixed;right:24px;bottom:24px;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;
+  background:#16c66a;color:#fff;font-size:24px;box-shadow:0 12px 30px rgba(0,0,0,.22);z-index:900
+}
+
+@media (max-width: 980px){
+  .main-nav{
+    position:absolute;left:20px;right:20px;top:76px;display:none;flex-direction:column;align-items:stretch;
+    background:#fff;padding:22px;border-radius:18px;box-shadow:var(--shadow);gap:16px
+  }
+  .main-nav.open{display:flex}
+  .menu-toggle{display:block}
+  .hero-grid,.feature-grid,.contact-grid{grid-template-columns:1fr}
+  .hero-grid{min-height:auto;padding:44px 0 36px}
+  .plans-grid{grid-template-columns:1fr;max-width:640px;margin:auto}
+  .plan-card.featured{transform:none}
+  .services-grid{grid-template-columns:1fr 1fr}
+  .info-grid,.hero-counters{grid-template-columns:1fr}
+  .cta-band-wrap{flex-direction:column;align-items:flex-start}
+  .footer-grid{grid-template-columns:1fr;text-align:left}
+  .copyright{text-align:left}
+}
+@media (max-width: 640px){
+  .container{width:min(100% - 28px,1180px)}
+  .nav-wrap{height:70px}
+  .hero h1{font-size:36px;letter-spacing:-1px}
+  .hero-actions .btn,.double-buttons .btn,.cta-band .btn{width:100%}
+  .section{padding:76px 0}
+  .services-grid,.contact-cards,.check-grid{grid-template-columns:1fr}
+  .info-grid{grid-template-columns:1fr}
+  .cta-band{padding-bottom:76px}
+  .cta-band-wrap{padding:34px 26px}
+}
+
+
+/* ===== V3: cabeçalho compacto + banner dinâmico ===== */
+.mini-topbar{
+  background:#f7f9fb;
+  border-bottom:1px solid #e6edf2;
+  font-size:12px;
+}
+.mini-topbar-wrap{
+  min-height:30px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+.mini-links,.mini-right{display:flex;align-items:center;gap:18px}
+.mini-links a,.mini-right a,.mini-right span{color:#314757}
+
+.site-header{top:0}
+.nav-wrap{height:58px}
+.main-nav{gap:22px;font-size:13px}
+.btn-sm{min-height:36px;padding:0 15px}
+
+/* 05. BANNER DINÂMICO */
+.hero-slider{
+  position:relative;
+  overflow:hidden;
+  background:#063655;
+  color:#fff;
+}
+.slides{position:relative;height:332px}
+.hero-slide{
+  position:absolute;
+  inset:0;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .45s ease;
+  display:flex;
+  align-items:center;
+}
+.hero-slide.active{opacity:1;pointer-events:auto}
+.slide-one{background:linear-gradient(110deg,#06395c 0%,#075986 55%,#0aa5df 100%)}
+.slide-two{background:linear-gradient(110deg,#062c4c 0%,#0a4d74 58%,#087ca5 100%)}
+.slide-three{background:linear-gradient(110deg,#0b3553 0%,#0e5b81 55%,#129bc1 100%)}
+
+.slide-grid{
+  display:grid;
+  grid-template-columns:1.35fr .65fr;
+  align-items:center;
+  gap:40px;
+  width:min(1180px,calc(100% - 40px));
+}
+.slide-copy{max-width:650px}
+.slide-copy .eyebrow{color:#a8eaff;margin-bottom:8px}
+.slide-copy h1,.slide-copy h2{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  font-weight:800;
+  font-size:clamp(30px,4vw,50px);
+  line-height:1.02;
+  letter-spacing:-1.5px;
+}
+.slide-copy p{
+  margin:12px 0 0;
+  font-size:15px;
+  line-height:1.55;
+  color:#deeff7;
+  max-width:560px;
+}
+.slide-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:18px;
+}
+.slide-actions .btn{
+  min-height:42px;
+  padding:0 18px;
+  border-radius:999px;
+  font-size:13px;
+}
+.btn-outline-light{
+  border:1px solid rgba(255,255,255,.6);
+  color:#fff;
+  background:transparent;
+}
+
+.slide-offer{
+  justify-self:end;
+  width:300px;
+  min-height:225px;
+  padding:24px;
+  border-radius:26px;
+  background:rgba(255,255,255,.97);
+  color:#082d4f;
+  box-shadow:0 16px 40px rgba(0,0,0,.18);
+}
+.slide-offer>span{
+  display:block;
+  color:#0a8bc0;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:1px;
+}
+.offer-speed{
+  margin-top:8px;
+  font-size:56px;
+  font-weight:900;
+  line-height:1;
+}
+.offer-speed small{font-size:16px}
+.offer-price{
+  margin-top:10px;
+  font-size:16px;
+  display:flex;
+  align-items:flex-end;
+  gap:4px;
+}
+.offer-price strong{font-size:44px;line-height:1}
+.offer-price small{font-size:12px;margin-bottom:5px;color:#60717d}
+.slide-offer a{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:40px;
+  margin-top:18px;
+  border-radius:999px;
+  background:#ffc928;
+  color:#16222b;
+  font-weight:800;
+  font-size:13px;
+}
+
+.slide-visual-card{
+  justify-self:end;
+  width:320px;
+  height:230px;
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:0 16px 40px rgba(0,0,0,.2);
+}
+.slide-visual-card img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.slider-arrow{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:38px;
+  height:38px;
+  border:0;
+  border-radius:50%;
+  background:rgba(255,255,255,.18);
+  color:#fff;
+  font-size:28px;
+  line-height:1;
+  cursor:pointer;
+  z-index:5;
+}
+.slider-arrow.prev{left:18px}
+.slider-arrow.next{right:18px}
+.slider-arrow:hover{background:rgba(255,255,255,.3)}
+
+.slider-dots{
+  position:absolute;
+  left:50%;
+  bottom:13px;
+  transform:translateX(-50%);
+  display:flex;
+  gap:8px;
+  z-index:6;
+}
+.dot{
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.9);
+  background:transparent;
+  padding:0;
+  cursor:pointer;
+}
+.dot.active{background:#fff}
+
+/* 06. FAIXA RÁPIDA DE BENEFÍCIOS */
+.quick-strip{
+  background:#fff;
+  border-bottom:1px solid #e8eff4;
+}
+.quick-strip-grid{
+  min-height:66px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+  align-items:center;
+}
+.quick-strip-grid>div{
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+  border-right:1px solid #e8eff4;
+}
+.quick-strip-grid>div:last-child{border-right:0}
+.quick-strip strong{font-size:13px;color:#173344}
+.quick-strip span{font-size:11px;color:#71808b}
+
+.plans-section{padding-top:58px}
+.plans-heading{margin-bottom:32px}
+.plans-heading h2{font-size:clamp(30px,3.2vw,44px)}
+
+/* 13. RESPONSIVIDADE */
+@media (max-width:980px){
+  .mini-topbar{display:none}
+  .nav-wrap{height:58px}
+  .slides{height:350px}
+  .slide-grid{grid-template-columns:1fr .72fr;gap:20px}
+  .slide-offer{width:250px;min-height:205px;padding:20px}
+  .slide-visual-card{width:260px;height:200px}
+  .slider-arrow{display:none}
+}
+@media (max-width:700px){
+  .slides{height:390px}
+  .hero-slide{align-items:flex-start;padding-top:28px}
+  .slide-grid{grid-template-columns:1fr;gap:18px}
+  .slide-copy h1,.slide-copy h2{font-size:34px}
+  .slide-copy p{font-size:14px}
+  .slide-offer,.slide-visual-card{
+    justify-self:start;
+    width:100%;
+    max-width:360px;
+    height:auto;
+    min-height:0;
+  }
+  .slide-visual-card{height:130px}
+  .offer-speed{font-size:42px}
+  .offer-price strong{font-size:34px}
+  .quick-strip-grid{
+    grid-template-columns:1fr;
+    gap:0;
+    padding:8px 0;
+  }
+  .quick-strip-grid>div{
+    padding:8px 0;
+    border-right:0;
+    border-bottom:1px solid #edf3f6;
+  }
+  .quick-strip-grid>div:last-child{border-bottom:0}
+  .plans-section{padding-top:40px}
+}
+
+
+/* =========================================================
+   REDE SOCIAL NO RODAPÉ
+   ========================================================= */
+.footer-social{
+  color:#7ce1ff;
+  font-weight:800;
+  margin-left:6px;
+}
+.footer-social:hover{
+  text-decoration:underline;
+}
+/* ==========================================================
+   LOGO BNT NO CABEÇALHO
+   ========================================================== */
+
+
+.footer-brand .brand-logo{
+  width:145px;
+  height:auto;
+  background:#fff;
+  padding:6px 10px;
+  border-radius:10px;
+}
+
+  </style>
+</head>
+<body>
+  <!-- =========================================================
+       TOPO INSTITUCIONAL
+       Barra fina com atalhos rápidos, localização e rede social.
+       ========================================================= -->
+
+  <div class="mini-topbar">
+    <div class="container mini-topbar-wrap">
+      <div class="mini-links">
+        <a href="#planos">Para você</a>
+        <a href="#empresa">Empresas</a>
+        <a href="#servicos">Serviços</a>
+      </div>
+      <div class="mini-right">
+        <span>📍 Congonhal/MG</span>
+        <a href="https://instagram.com/bnt_telecom" target="_blank" rel="noopener noreferrer">@bnt_telecom</a>
+        <a href="tel:+5535991187154">☎ Atendimento</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       CABEÇALHO PRINCIPAL
+       Contém logotipo, navegação e CTA para WhatsApp.
+       ========================================================= -->
+  <header class="site-header" id="inicio">
+    <div class="container nav-wrap">
+
+        <a class="brand" href="#inicio" aria-label="BNT Brasil Networks">
+            <img src="logo-bnt.png"
+     alt="BNT Brasil Networks"
+     class="brand-logo">
+        </a>
+
+        <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+            </button>
+
+      <nav class="main-nav">
+        <a href="#planos">Planos</a>
+        <a href="#empresa">Empresa</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#contato">Contato</a>
+        <a class="btn btn-sm btn-primary" href="https://wa.me/5535999022140" target="_blank" rel="noopener">WhatsApp</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- =========================================================
+       CONTEÚDO PRINCIPAL
+       Todas as seções visuais e comerciais ficam dentro de <main>.
+       ========================================================= -->
+  <main>
+    <!-- =========================================================
+       BANNER DINÂMICO / HERO
+       O JavaScript em assets/js/main.js controla:
+       - troca automática de banners
+       - setas de navegação
+       - indicadores (bolinhas)
+       ========================================================= -->
+    <section class="hero-slider" aria-label="Destaques BNT">
+      <div class="slides">
+        <article class="hero-slide active slide-one">
+          <div class="container slide-grid">
+            <div class="slide-copy">
+              <span class="eyebrow">BNT Brasil Networks</span>
+              <h1>Internet fibra para sua casa.</h1>
+              <p>Velocidade, estabilidade e suporte local em Congonhal e região.</p>
+              <div class="slide-actions">
+                <a class="btn btn-light" href="#planos">Ver planos</a>
+                <a class="btn btn-outline-light" href="https://wa.me/5535999022140?text=Olá%20BNT!%20Quero%20consultar%20cobertura." target="_blank" rel="noopener">Consultar cobertura</a>
+              </div>
+            </div>
+            <div class="slide-offer">
+              <span>PLANO DESTAQUE</span>
+              <div class="offer-speed">500 <small>MEGA</small></div>
+              <div class="offer-price">R$ <strong>100</strong><small>/mês</small></div>
+              <a href="https://wa.me/5535999022140?text=Olá%20BNT!%20Quero%20o%20plano%20de%20500%20Mega." target="_blank" rel="noopener">Quero contratar</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="hero-slide slide-two">
+          <div class="container slide-grid">
+            <div class="slide-copy">
+              <span class="eyebrow">Mais velocidade</span>
+              <h2>700 Mega para uma casa toda conectada.</h2>
+              <p>Streaming, games, trabalho e vários dispositivos ao mesmo tempo.</p>
+              <div class="slide-actions">
+                <a class="btn btn-light" href="https://wa.me/5535999022140?text=Olá%20BNT!%20Quero%20o%20plano%20de%20700%20Mega." target="_blank" rel="noopener">Quero 700 Mega</a>
+                <a class="btn btn-outline-light" href="#servicos">Conhecer serviços</a>
+              </div>
+            </div>
+            <div class="slide-visual-card">
+              <img src="hero-network.svg" alt="Conectividade BNT">
+            </div>
+          </div>
+        </article>
+
+        <article class="hero-slide slide-three">
+          <div class="container slide-grid">
+            <div class="slide-copy">
+              <span class="eyebrow">Atendimento local</span>
+              <h2>Quando você precisa, a BNT está perto.</h2>
+              <p>Suporte rápido, atendimento humano e equipe da região.</p>
+              <div class="slide-actions">
+                <a class="btn btn-light" href="https://wa.me/5535999022140?text=Olá%20BNT!%20Preciso%20de%20suporte." target="_blank" rel="noopener">Falar com suporte</a>
+                <a class="btn btn-outline-light" href="#contato">Ver contatos</a>
+              </div>
+            </div>
+            <div class="slide-visual-card">
+              <img src="support-local.svg" alt="Suporte local BNT">
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <button class="slider-arrow prev" aria-label="Banner anterior">‹</button>
+      <button class="slider-arrow next" aria-label="Próximo banner">›</button>
+
+      <div class="slider-dots" aria-label="Navegação do banner">
+        <button class="dot active" aria-label="Banner 1"></button>
+        <button class="dot" aria-label="Banner 2"></button>
+        <button class="dot" aria-label="Banner 3"></button>
+      </div>
+    </section>
+
+    <section class="quick-strip">
+      <div class="container quick-strip-grid">
+        <div><strong>⚡ Instalação rápida</strong><span>Consulte disponibilidade</span></div>
+        <div><strong>🛠 Suporte local</strong><span>Equipe perto de você</span></div>
+        <div><strong>💬 WhatsApp</strong><span>Atendimento fácil e direto</span></div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+       PLANOS RESIDENCIAIS
+       Cards comerciais com preço, benefícios e botão de conversão.
+       ========================================================= -->
+    <section class="section plans-section" id="planos">
+      <div class="container">
+        <div class="section-heading plans-heading">
+          <span class="eyebrow">Planos residenciais</span>
+          <h2>Escolha o plano ideal para sua rotina</h2>
+          <p>Planos simples, competitivos e com conexão de alta qualidade.</p>
+        </div>
+
+        <div class="plans-grid">
+          <article class="plan-card">
+            <div class="plan-top">
+              <span class="plan-kicker">Essencial</span>
+              <div class="plan-speed"><strong>350</strong><span>MEGA</span></div>
+            </div>
+            <div class="plan-price"><span>R$</span><strong>90</strong><small>/mês</small></div>
+            <ul>
+              <li>Ideal para streaming e redes sociais</li>
+              <li>Boa estabilidade para videochamadas</li>
+              <li>Suporte técnico local</li>
+              <li>Instalação grátis*</li>
+            </ul>
+            <div class="plan-actions">
+              <a class="btn btn-outline" href="https://wa.me/5535999022140?text=Olá%20BNT!%20Quero%20o%20plano%20de%20350%20Mega." target="_blank" rel="noopener">Quero 350 Mega</a>
+            </div>
+          </article>
+
+          <article class="plan-card featured">
+            <div class="featured-badge">Mais escolhido</div>
+            <div class="plan-top">
+              <span class="plan-kicker">Família</span>
+              <div class="plan-speed"><strong>500</strong><span>MEGA</span></div>
+            </div>
+            <div class="plan-price"><span>R$</span><strong>100</strong><small>/mês</small></div>
+            <ul>
+              <li>Excelente custo-benefício</li>
+              <li>Mais aparelhos conectados ao mesmo tempo</li>
+              <li>Jogos, streaming e trabalho remoto</li>
+              <li>Instalação grátis*</li>
+            </ul>
+            <div class="plan-actions">
+              <a class="btn btn-primary" href="https://wa.me/5535999022140?text=Olá%20BNT!%20Quero%20o%20plano%20de%20500%20Mega." target="_blank" rel="noopener">Quero 500 Mega</a>
+            </div>
+          </article>
+
+          <article class="plan-card">
+            <div class="plan-top">
+              <span class="plan-kicker">Performance</span>
+              <div class="plan-speed"><strong>700</strong><span>MEGA</span></div>
+            </div>
+            <div class="plan-price"><span>R$</span><strong>120</strong><small>/mês</small></div>
+            <ul>
+              <li>Alta velocidade para casas bem conectadas</li>
+              <li>4K, games e vários dispositivos</li>
+              <li>Suporte técnico local</li>
+              <li>Instalação grátis*</li>
+            </ul>
+            <div class="plan-actions">
+              <a class="btn btn-outline" href="https://wa.me/5535999022140?text=Olá%20BNT!%20Quero%20o%20plano%20de%20700%20Mega." target="_blank" rel="noopener">Quero 700 Mega</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="section-cta">
+          <a class="btn btn-primary btn-lg" href="https://wa.me/5535999022140?text=Olá%20BNT!%20Gostaria%20de%20ajuda%20para%20escolher%20o%20melhor%20plano." target="_blank" rel="noopener">Me ajude a escolher</a>
+        </div>
+
+        <p class="fine-print">*Valores e disponibilidade sujeitos à cobertura e confirmação com a equipe da BNT.</p>
+      </div>
+    </section>
+
+    <!-- =========================================================
+       SOBRE A BNT
+       Apresentação institucional da empresa e seus diferenciais.
+       ========================================================= -->
+    <section class="section image-section" id="empresa">
+      <div class="container feature-grid">
+        <div class="feature-image">
+          <img src="fiber-home.svg" alt="Ilustração de internet fibra óptica residencial" />
+        </div>
+        <div class="feature-copy">
+          <span class="eyebrow">Sobre a empresa</span>
+          <h2>A BNT conecta pessoas, casas e negócios.</h2>
+          <p>
+            A Brasil Networks nasceu para entregar uma internet mais estável e próxima do cliente.
+            Aqui, o diferencial não é só a velocidade: é a confiança no atendimento e o suporte de quem conhece a região.
+          </p>
+          <div class="check-grid">
+            <span>✓ Atendimento local</span>
+            <span>✓ Rede em fibra óptica</span>
+            <span>✓ Soluções residenciais e empresariais</span>
+            <span>✓ Equipe próxima de você</span>
+          </div>
+          <div class="double-buttons">
+            <a class="btn btn-primary" href="https://wa.me/5535999022140?text=Olá%20BNT!%20Quero%20contratar%20internet." target="_blank" rel="noopener">Contratar agora</a>
+            <a class="btn btn-outline" href="#contato">Falar com a equipe</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+       SERVIÇOS
+       Blocos com as principais soluções oferecidas pela BNT.
+       ========================================================= -->
+    <section class="section services-section" id="servicos">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Nossos serviços</span>
+          <h2>Mais do que internet: uma solução de conectividade</h2>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="service-icon">⌂</div>
+            <h3>Internet residencial</h3>
+            <p>Planos ideais para assistir, estudar, jogar e trabalhar sem interrupções.</p>
+            <a class="service-link" href="https://wa.me/5535999022140?text=Olá%20BNT!%20Quero%20internet%20residencial." target="_blank" rel="noopener">Saiba mais</a>
+          </article>
+          <article class="service-card">
+            <div class="service-icon">▦</div>
+            <h3>Internet empresarial</h3>
+            <p>Conectividade para manter sua empresa sempre online e produtiva.</p>
+            <a class="service-link" href="https://wa.me/5535999022140?text=Olá%20BNT!%20Quero%20internet%20empresarial." target="_blank" rel="noopener">Saiba mais</a>
+          </article>
+          <article class="service-card">
+            <div class="service-icon">◉</div>
+            <h3>Suporte técnico</h3>
+            <p>Equipe local preparada para orientar e resolver com mais agilidade.</p>
+            <a class="service-link" href="https://wa.me/5535999022140?text=Olá%20BNT!%20Preciso%20de%20suporte." target="_blank" rel="noopener">Pedir suporte</a>
+          </article>
+          <article class="service-card">
+            <div class="service-icon">⌁</div>
+            <h3>Wi‑Fi e rede interna</h3>
+            <p>Orientação e apoio para melhorar a experiência do sinal no seu ambiente.</p>
+            <a class="service-link" href="https://wa.me/5535999022140?text=Olá%20BNT!%20Quero%20melhorar%20meu%20Wi-Fi." target="_blank" rel="noopener">Saiba mais</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section image-section alt">
+      <div class="container feature-grid reverse">
+        <div class="feature-copy">
+          <span class="eyebrow">Atendimento e suporte</span>
+          <h2>Quando você precisa, a BNT responde.</h2>
+          <p>
+            Atendimento direto, suporte local e contato pelo WhatsApp para facilitar sua vida.
+            Mais proximidade no relacionamento e mais confiança para o cliente.
+          </p>
+          <div class="double-buttons">
+            <a class="btn btn-primary" href="https://wa.me/5535999022140?text=Olá%20BNT!%20Quero%20consultar%20cobertura." target="_blank" rel="noopener">Consultar cobertura</a>
+            <a class="btn btn-outline" href="tel:+5535991187154">Ligar agora</a>
+          </div>
+        </div>
+        <div class="feature-image">
+          <img src="support-local.svg" alt="Ilustração de atendimento e suporte local" />
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band">
+      <div class="container cta-band-wrap">
+        <div>
+          <span class="eyebrow eyebrow-light">Cobertura</span>
+          <h2>Quer saber se a BNT atende o seu endereço?</h2>
+          <p>Fale agora com a equipe e tire suas dúvidas rapidamente.</p>
+        </div>
+        <a class="btn btn-light btn-lg" href="https://wa.me/5535999022140?text=Olá%20BNT!%20Quero%20consultar%20cobertura%20no%20meu%20endereço." target="_blank" rel="noopener">Falar no WhatsApp</a>
+      </div>
+    </section>
+
+    <!-- =========================================================
+       CONTATO
+       Telefones, WhatsApp, localização e Instagram.
+       ========================================================= -->
+    <section class="section contact-section" id="contato">
+      <div class="container contact-grid">
+        <div>
+          <span class="eyebrow">Contato</span>
+          <h2>Fale com a Brasil Networks</h2>
+          <p>Atendimento rápido para dúvidas, cobertura, contratação e suporte.</p>
+          <div class="double-buttons">
+            <a class="btn btn-primary" href="https://wa.me/5535999022140" target="_blank" rel="noopener">WhatsApp</a>
+            <a class="btn btn-outline" href="tel:+5535991187154">Ligar</a>
+          </div>
+        </div>
+        <div class="contact-cards">
+          <div class="contact-card">
+            <span>WhatsApp</span>
+            <strong>(35) 99902-2140</strong>
+            <a href="https://wa.me/5535999022140" target="_blank" rel="noopener">Abrir conversa</a>
+          </div>
+          <div class="contact-card">
+            <span>Telefone</span>
+            <strong>(35) 99118-7154</strong>
+            <a href="tel:+5535991187154">Fazer ligação</a>
+          </div>
+          <div class="contact-card full">
+            <span>Localização</span>
+            <strong>Congonhal - MG</strong>
+            <a href="https://wa.me/5535999022140?text=Olá%20BNT!%20Quero%20atendimento." target="_blank" rel="noopener">Entrar em contato</a>
+          </div>
+          <div class="contact-card full">
+            <span>Instagram</span>
+            <strong>@bnt_telecom</strong>
+            <a href="https://instagram.com/bnt_telecom" target="_blank" rel="noopener noreferrer">Abrir Instagram</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================
+       RODAPÉ
+       Informações institucionais e rede social.
+       ========================================================= -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="brand footer-brand">
+        <img src="logo-bnt.png" alt="BNT Brasil Networks" class="brand-logo">
+      </div>
+      <p>Internet rápida, estável e com suporte local. <a class="footer-social" href="https://instagram.com/bnt_telecom" target="_blank" rel="noopener noreferrer">@bnt_telecom</a></p>
+      <p class="copyright">© <span id="year"></span> Brasil Networks. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <a class="floating-whatsapp" href="https://wa.me/5535999022140" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+    <span>☏</span>
+  </a>
+  <script>
+
+'use strict';
+
+/* MENU MOBILE */
+const menuBtn = document.querySelector('.menu-toggle');
+const nav = document.querySelector('.main-nav');
+
+menuBtn?.addEventListener('click', () => {
+  const open = nav?.classList.toggle('open') ?? false;
+  menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+});
+
+document.querySelectorAll('.main-nav a').forEach((link) => {
+  link.addEventListener('click', () => {
+    nav?.classList.remove('open');
+    menuBtn?.setAttribute('aria-expanded', 'false');
+  });
+});
+
+/* ANO AUTOMÁTICO */
+const yearElement = document.getElementById('year');
+if (yearElement) {
+  yearElement.textContent = new Date().getFullYear();
+}
+
+/* BANNER DINÂMICO */
+const slides = [...document.querySelectorAll('.hero-slide')];
+const dots = [...document.querySelectorAll('.dot')];
+const prev = document.querySelector('.slider-arrow.prev');
+const next = document.querySelector('.slider-arrow.next');
+
+let currentSlide = 0;
+let sliderTimer;
+
+function showSlide(index) {
+  if (!slides.length) return;
+
+  currentSlide = (index + slides.length) % slides.length;
+
+  slides.forEach((slide, i) => {
+    slide.classList.toggle('active', i === currentSlide);
+  });
+
+  dots.forEach((dot, i) => {
+    dot.classList.toggle('active', i === currentSlide);
+  });
+}
+
+function startSlider() {
+  if (!slides.length) return;
+
+  clearInterval(sliderTimer);
+  sliderTimer = setInterval(() => {
+    showSlide(currentSlide + 1);
+  }, 5000);
+}
+
+prev?.addEventListener('click', () => {
+  showSlide(currentSlide - 1);
+  startSlider();
+});
+
+next?.addEventListener('click', () => {
+  showSlide(currentSlide + 1);
+  startSlider();
+});
+
+dots.forEach((dot, i) => {
+  dot.addEventListener('click', () => {
+    showSlide(i);
+    startSlider();
+  });
+});
+
+if (slides.length > 0) {
+  showSlide(0);
+  startSlider();
+}
+
+  </script>
+</body>
+</html>
